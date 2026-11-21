@@ -357,7 +357,10 @@ def notify(text, title="ModelScope 每日签到"):
     if bark:
         post_json(
             bark.rstrip("/") + "/" + requests.utils.quote(title, safe=""),
-            {"body": content},
+           {
+                "body": content,
+                "group": "ModelScope"
+           },
         )
     wecom = os.getenv("WECOM_WEBHOOK", "").strip() or os.getenv("QYWX_TOKEN", "").strip()
     if wecom:
